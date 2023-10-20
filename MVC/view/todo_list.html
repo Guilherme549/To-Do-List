@@ -1,0 +1,20 @@
+<!-- view/todo_list.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Minha Lista de Tarefas</title>
+</head>
+<body>
+    <h1>Minha Lista de Tarefas</h1>
+    <ul>
+        {% for task in tasks %}
+            <li>{{ task }}</li>
+        {% endfor %}
+    </ul>
+    <form action="/add_task" method="post">
+        <input type="text" name="new_task" placeholder="Adicionar nova tarefa">
+        <button type="submit">Adicionar</button>
+    </form>
+</body>
+</html>
