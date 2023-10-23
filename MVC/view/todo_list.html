@@ -1,20 +1,89 @@
-<!-- view/todo_list.html -->
-
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
+
 <head>
-    <title>Minha Lista de Tarefas</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Todo list</title>
+
+    <style>
+        body,
+        html {
+            padding: 0px;
+            border: 0px;
+            margin: 0px;
+            background-color: #eff1f2;
+
+        }
+
+
+        main {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            flex-wrap: wrap;
+        }
+
+        .badge{
+            margin: 0 0 0 25px;
+            
+        }
+
+        .p-4 {
+            background-color: white;
+            border-radius: 11px;
+            text-decoration: none;
+            width: 300px;
+            height: 250px;
+            margin: 5px;
+        }
+
+        .mb-2 {
+            text-align: center;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Minha Lista de Tarefas</h1>
-    <ul>
-        {% for task in tasks %}
-            <li>{{ task }}</li>
-        {% endfor %}
-    </ul>
-    <form action="/add_task" method="post">
-        <input type="text" name="new_task" placeholder="Adicionar nova tarefa">
-        <button type="submit">Adicionar</button>
-    </form>
+    <header>
+        <p class="h1 text-center mt-3 mb-4 pb-3 text-primary">
+            <i class="fas fa-check-square me-1"></i>
+            <u>Minhas Tarefas</u>
+        </p>
+
+        <form action="#">
+
+            <div class="pb-2">
+                <div class="card">
+
+                    <div class="d-flex flex-row align-items-center">
+                        <input type="text" class="form-control form-control-lg" id="exampleFormControlInput1"
+                            placeholder="Add new...">
+                        <input type="date" name="data">
+
+                        <input type="submit" value="Salvar" class="btn btn-primary">
+
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </header>
+    <p class="badge bg-success">Hoje</p>
+    <main>
+
+
+
+        <div class="card-body p-4" id="tarefa">
+
+            <p class="mb-2"><span class="h2 me-2">Nome da Tarefa</span> <span class="badge bg-danger">Fazer</span>
+            </p>
+            <p class="text-muted pb-2">04/01/2020</p>
+        </div>
+
+    </main>
 </body>
+
 </html>
