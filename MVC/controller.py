@@ -1,8 +1,8 @@
-
 from fastapi import FastAPI, Request, Form
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
-from 
+from models import BancoDeDados
+
 
 # app = FastAPI()
 # templates = Jinja2Templates(directory="view")
@@ -15,6 +15,10 @@ from
 app = FastAPI()
 templates = Jinja2Templates(directory="view")
 
+
 @app.get("/")
 def todo(request: Request):
-    return templates.TemplateResponse("todo_list.html", {"request": request})
+    banco = BancoDeDados("dbsqlite")
+    return templates.TemplateResponse(
+        "todo_list.html", {"request": request, "banco": banco}
+    )

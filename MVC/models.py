@@ -18,6 +18,3 @@ class BancoDeDados:
             "INSERT INTO Tarefas (Titulo, data) Values (?, ?)", (titulo, data)
         )
         self.con.commit()
-
-
-banco = BancoDeDados("dbsqlite")
