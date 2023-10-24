@@ -18,3 +18,10 @@ class BancoDeDados:
             "INSERT INTO Tarefas (Titulo, data) Values (?, ?)", (titulo, data)
         )
         self.con.commit()
+
+    def mostrar_tarefas(self):
+        cursor = self.con.cursor()
+        cursor.execute("SELECT * FROM Tarefas")
+        tarefas = cursor.fetchall()
+        cursor.close()
+        return tarefas

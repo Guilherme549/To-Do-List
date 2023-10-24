@@ -19,6 +19,12 @@ templates = Jinja2Templates(directory="view")
 @app.get("/")
 def todo(request: Request):
     banco = BancoDeDados("dbsqlite")
+    tarefas = banco.mostrar_tarefas()
     return templates.TemplateResponse(
-        "todo_list.html", {"request": request, "banco": banco}
+        "todo_list.html",
+        {
+            "request": request,
+            "banco": banco,
+            "tarefas": tarefas,
+        },
     )
