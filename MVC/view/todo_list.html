@@ -33,11 +33,12 @@
 
         .p-4 {
             background-color: white;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.459);
             border-radius: 11px;
             text-decoration: none;
             width: 300px;
-            height: 250px;
-            margin: 5px;
+            height: 230px;
+            margin: 10px;
         }
 
         .pb-2{
@@ -49,6 +50,7 @@
         }
 
         
+
     </style>
 </head>
 
@@ -59,15 +61,15 @@
             <u>Minhas Tarefas</u>
         </p>
 
-        <form action="/" method="POST">
+        <form action="/tarefas" method="POST">
 
             <div class="pb-2">
                 <div class="card">
 
                     <div class="d-flex flex-row align-items-center">
                         <input type="text" class="form-control form-control-lg" id="exampleFormControlInput1"
-                            placeholder="Nova tarefa..." name="tarefa">
-                        <input type="date" name="data">
+                            placeholder="Nova tarefa..." name="tarefa" required>
+                        <input type="date" name="data" required>
 
                         <input type="submit" value="Salvar" class="btn btn-primary">
 

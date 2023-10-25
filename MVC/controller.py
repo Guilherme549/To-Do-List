@@ -11,17 +11,17 @@ templates = Jinja2Templates(directory="view")
 def todo(request: Request):
     banco = BancoDeDados("dbsqlite")
     tarefas = banco.mostrar_tarefas()
+
     return templates.TemplateResponse(
         "todo_list.html",
         {
             "request": request,
-            "banco": banco,
             "tarefas": tarefas,
         },
     )
 
 
-@app.post("/")
+@app.post("/tarefas")
 def teste(request: Request, tarefa: str = Form(...), data: str = Form(...)):
     banco = BancoDeDados("dbsqlite")
     banco.salvar_alteracao(tarefa, data)
