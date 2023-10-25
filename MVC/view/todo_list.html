@@ -18,13 +18,13 @@
 
         }
 
-        h1{
+        h1 {
             text-align: center;
             color: rgb(63, 63, 112);
-            font-family:  Verdana, Geneva, Tahoma, sans-serif ;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
         }
 
-        main {
+        section {
             justify-content: center;
             padding: 20px;
 
@@ -60,10 +60,10 @@
 
 <body>
     <header>
-        
-            <h1>Minhas Tarefas</h1>
 
-        <form action="/tarefas" method="POST">
+        <h1>Minhas Tarefas</h1>
+
+        <form action="/tarefas" method="POST" autocomplete="off">
 
             <div class="pb-2">
                 <div class="card">
@@ -81,25 +81,10 @@
             </div>
         </form>
     </header>
-    <main>
+    <section>
         <p class="badge bg-success">Hoje</p>
         {% for tarefa in tarefas %}
-            {% if tarefa[2] == data_de_hoje %}
-
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card-body p-4" id="tarefa" style="position: relative;">
-                        <p class="mb-2"><span class="h2 me-2">{{tarefa[1]}}</span> <span class="badge bg-danger"
-                                style="position: absolute; top: 0; right: 0;">Fazer</span></p>
-                        <p class="text-muted pb-2">{{tarefa[2]}}</p>
-
-                    </div>
-                </div>
-
-            {% endif %}
-        {% endfor %}
-    <p class="badge bg-warning">Amanhã</p>   
-    {% for tarefa in tarefas %}
-    {% if tarefa[2] == data_de_amanha_formatada %}
+        {% if tarefa[2] == data_de_hoje %}
 
         <div class="col-12 col-md-6 col-lg-4">
             <div class="card-body p-4" id="tarefa" style="position: relative;">
@@ -110,9 +95,26 @@
             </div>
         </div>
 
-    {% endif %}
-{% endfor %}
-    </main>
+        {% endif %}
+        {% endfor %}
+    </section>
+    <section>
+        <p class="badge bg-warning">Amanhã</p>
+        {% for tarefa in tarefas %}
+        {% if tarefa[2] == data_de_amanha_formatada %}
+
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="card-body p-4" id="tarefa" style="position: relative;">
+                <p class="mb-2"><span class="h2 me-2">{{tarefa[1]}}</span> <span class="badge bg-danger"
+                        style="position: absolute; top: 0; right: 0;">Fazer</span></p>
+                <p class="text-muted pb-2">{{tarefa[2]}}</p>
+
+            </div>
+        </div>
+
+        {% endif %}
+        {% endfor %}
+    </section>
 </body>
 
 </html>
