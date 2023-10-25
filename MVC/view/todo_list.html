@@ -20,37 +20,38 @@
 
 
         main {
-            display: flex;
             justify-content: center;
             padding: 20px;
-            flex-wrap: wrap;
+
         }
 
-        .badge{
+        .badge {
             margin: 0 0 0 25px;
-            
+
         }
 
         .p-4 {
+            text-align: justify;
             background-color: white;
             box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.459);
             border-radius: 11px;
-            text-decoration: none;
             width: 300px;
             height: 230px;
-            margin: 10px;
+            margin-bottom: 15px;
+            
         }
 
-        .pb-2{
-           padding: 0 20px 0 20px;
+        .pb-2 {
+            padding: 0 20px 0 20px;
         }
 
         .mb-2 {
             text-align: center;
         }
 
-        
-
+        .col-12{
+            
+        }
     </style>
 </head>
 
@@ -84,16 +85,17 @@
 
 
 
-        {% for tarefa in tarefas %}
-
-            <div class="card-body p-4" id="tarefa">
-                
-                <p class="mb-2"><span class="h2 me-2">{{tarefa[1]}}</span> <span class="badge bg-danger">Fazer</span>
-                </p>
-                <p class="text-muted pb-2">{{tarefa[2]}}</p>
-            </div>
-
-        {% endfor %}
+        <div class="row">
+            {% for tarefa in tarefas %}
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card-body p-4" id="tarefa" style="position: relative;">
+                        <p class="mb-2"><span class="h2 me-2">{{tarefa[1]}}</span> <span class="badge bg-danger"
+                                style="position: absolute; top: 0; right: 0;">Fazer</span></p>
+                        <p class="text-muted pb-2">{{tarefa[2]}}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
 
     </main>
 </body>
