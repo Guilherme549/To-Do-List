@@ -18,6 +18,11 @@
 
         }
 
+        h1{
+            text-align: center;
+            color: rgb(63, 63, 112);
+            font-family:  Verdana, Geneva, Tahoma, sans-serif ;
+        }
 
         main {
             justify-content: center;
@@ -26,7 +31,7 @@
         }
 
         .badge {
-            margin: 0 0 0 25px;
+            margin-bottom: 10px;
 
         }
 
@@ -38,7 +43,7 @@
             width: 300px;
             height: 230px;
             margin-bottom: 15px;
-            
+
         }
 
         .pb-2 {
@@ -49,18 +54,14 @@
             text-align: center;
         }
 
-        .col-12{
-            
-        }
+        .col-12 {}
     </style>
 </head>
 
 <body>
     <header>
-        <p class="h1 text-center mt-3 mb-4 pb-3 text-primary">
-            <i class="fas fa-check-square me-1"></i>
-            <u>Minhas Tarefas</u>
-        </p>
+        
+            <h1>Minhas Tarefas</h1>
 
         <form action="/tarefas" method="POST">
 
@@ -80,23 +81,37 @@
             </div>
         </form>
     </header>
-    <p class="badge bg-success">Hoje</p>
     <main>
+        <p class="badge bg-success">Hoje</p>
+        {% for tarefa in tarefas %}
+            {% if tarefa[2] == data_de_hoje %}
 
-
-
-        <div class="row">
-            {% for tarefa in tarefas %}
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card-body p-4" id="tarefa" style="position: relative;">
                         <p class="mb-2"><span class="h2 me-2">{{tarefa[1]}}</span> <span class="badge bg-danger"
                                 style="position: absolute; top: 0; right: 0;">Fazer</span></p>
                         <p class="text-muted pb-2">{{tarefa[2]}}</p>
+
                     </div>
                 </div>
-            {% endfor %}
+
+            {% endif %}
+        {% endfor %}
+    <p class="badge bg-warning">Amanhã</p>   
+    {% for tarefa in tarefas %}
+    {% if tarefa[2] == data_de_amanha_formatada %}
+
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="card-body p-4" id="tarefa" style="position: relative;">
+                <p class="mb-2"><span class="h2 me-2">{{tarefa[1]}}</span> <span class="badge bg-danger"
+                        style="position: absolute; top: 0; right: 0;">Fazer</span></p>
+                <p class="text-muted pb-2">{{tarefa[2]}}</p>
+
+            </div>
         </div>
 
+    {% endif %}
+{% endfor %}
     </main>
 </body>
 
