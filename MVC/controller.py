@@ -1,16 +1,7 @@
 from fastapi import FastAPI, Request, Form
 from fastapi.templating import Jinja2Templates
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, RedirectResponse
 from models import BancoDeDados
-
-
-# app = FastAPI()
-# templates = Jinja2Templates(directory="view")
-
-# @app.get("/", response_class=HTMLResponse)
-# async def read_root(request: Request):
-#     return templates.TemplateResponse("todo_list.html", {"request": request, "tasks": tasks})
-
 
 app = FastAPI()
 templates = Jinja2Templates(directory="view")
@@ -28,3 +19,10 @@ def todo(request: Request):
             "tarefas": tarefas,
         },
     )
+
+
+@app.post("/")
+def teste(request: Request, tarefa: str = Form(...), data: str = Form(...)):
+    banco = BancoDeDados("dbsqlite")
+    banco.salvar_alteracao(tarefa, data)
+    return RedirectResponse("/", status_code=303)

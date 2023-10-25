@@ -14,10 +14,11 @@ class BancoDeDados:
             self.con = sqlite3.Connection("dbsqlite")
 
     def salvar_alteracao(self, titulo, data):
-        self.con.execute(
-            "INSERT INTO Tarefas (Titulo, data) Values (?, ?)", (titulo, data)
-        )
-        self.con.commit()
+         if titulo:
+            self.con.execute("INSERT INTO Tarefas (Titulo, data) VALUES (?, ?)", (titulo, data))
+            self.con.commit()
+
+
 
     def mostrar_tarefas(self):
         cursor = self.con.cursor()
