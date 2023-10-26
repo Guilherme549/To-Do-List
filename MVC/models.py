@@ -31,7 +31,7 @@ class BancoDeDados:
         cursor.close()
         return tarefas
 
-    def editar_dado(self, id):
+    def alterar_status(self, id):
         feito = "Feito"
         cursor = self.con.cursor()
         try:
@@ -41,3 +41,11 @@ class BancoDeDados:
         except Exception as e:
             cursor.execute("ROLLBACK")
             print(f"Erro ao atualizar: {e}")
+
+    def editar_tarefa(self, id, titulo, data):
+        cursor = self.con.cursor()
+        cursor.execute("BEGIN")
+        self.con.execute(
+            "UPDATE Tarefas SET Titulo = ?, data = ? where id ?", (titulo, data, id)
+        )
+        cursor.execute("COMMIT")

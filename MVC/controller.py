@@ -41,7 +41,12 @@ def teste(request: Request, tarefa: str = Form(...), data: str = Form(...)):
 
 @app.get("/done/{id}")
 def done(id: int):
-    print("Rota done ativada")
     banco = BancoDeDados("dbsqlite")
-    banco.editar_dado(id)
+    banco.alterar_status(id)
     return RedirectResponse("/")
+
+
+@app.get("/editar/{id}")
+def edit(request: Request, id: int):
+    banco = BancoDeDados("dbsqlite")
+    return templates.TemplateResponse("editar_tarefa.html", {"request": request})

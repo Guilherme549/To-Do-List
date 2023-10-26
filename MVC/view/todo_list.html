@@ -123,7 +123,7 @@
                     <a href="/done/{{tarefa[0]}}"><span class="material-icons" id="done">
                             done
                         </span></a>
-                        <a id="edit" href="#"><span class="material-icons">mode</span></a>
+                        <a id="edit" href="/editar/{{tarefa[0]}}"><span class="material-icons">mode</span></a>
                     {% else %}
                     <span class="badge bg-success" style="position: absolute; top: 0; right: 0;">{{tarefa[3]}}</span>
                     {% endif %}
@@ -166,6 +166,38 @@
         {% endif %}
         {% endfor %}
     </section>
+
+    <section>
+
+        <h1>Outras datas</h1>
+        {% for tarefa in tarefas %}
+       
+
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="card-body p-4" id="tarefa" style="position: relative;">
+                <p class="mb-2"><span class="h2 me-2">{{tarefa[1]}}</span>
+                    {% if tarefa[3] == "Fazer" %}
+                    <span class="badge bg-danger" style="position: absolute; top: 0; right: 0;">{{tarefa[3]}}</span>
+                    <a href="/done/{{tarefa[0]}}"><span class="material-icons" id="done">
+                            done
+                        </span></a>
+                    <a id="edit" href="#"><span class="material-icons">mode</span></a>
+                    {% else %}
+                    <span class="badge bg-success" style="position: absolute; top: 0; right: 0;">{{tarefa[3]}}</span>
+                    {% endif %}
+                </p>
+                <p class="text-muted pb-2">{{tarefa[2]}}</p>
+                <a href="#" id="delete"><span class="material-icons">
+                        delete
+                    </span></a>
+            </div>
+        </div>
+
+        
+        {% endfor %}
+
+    </section>
+
 </body>
 
 </html>

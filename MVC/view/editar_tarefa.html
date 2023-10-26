@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="css.css">
+    <title>Tarefa</title>
+    <style>
+        body,
+        html {
+            background-color: #eff1f2;
+            height: 100%;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .p-4 {
+            text-align: justify;
+            background-color: white;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.459);
+            border-radius: 11px;
+            width: 300px;
+            height: 300px;
+            right: 100%;
+        }
+
+        .mb-2 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="col-12 col-md-6 col-lg-4">
+        <div class="card-body p-4" id="tarefa" style="position: relative;">
+            <form action="#" method="post">
+
+                <p class="mb-2">
+                    <input type="text" class="form-control" placeholder="Editar titulo" name="tituloEditado">
+                    <span class="badge bg-success" style="position: absolute; top: 0; right: 0;">Status</span>
+                </p>
+                <br>
+                <br>
+                <input type="date" name="dataEditada" id="">
+                <br>
+                <br>
+                <input type="submit" value="Salvar" class="btn btn-primary" >
+            </form> 
+        </div>
+    </div>
+</body>
+
+</html>
