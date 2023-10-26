@@ -56,30 +56,30 @@
         }
 
         #edit {
-            position: absolute; 
-            bottom: 0; 
+            position: absolute;
+            bottom: 0;
             right: 0;
             padding: 10px;
             color: #54B4D3;
         }
 
-        #delete{
-            position: absolute; 
+        #delete {
+            position: absolute;
             bottom: 180px;
             right: 260px;
             padding: 10px;
             color: #E4A11B;
         }
 
-        #done{
-            position: absolute; 
-            bottom: 5px; 
+        #done {
+            position: absolute;
+            bottom: 5px;
             right: 140px;
             padding: 10px;
             color: rgb(18, 121, 18);
         }
 
-        #done:hover{
+        #done:hover {
             color: white;
             background-color: green;
             border-radius: 10px;
@@ -117,17 +117,20 @@
 
         <div class="col-12 col-md-6 col-lg-4">
             <div class="card-body p-4" id="tarefa" style="position: relative;">
-                <p class="mb-2"><span class="h2 me-2">{{tarefa[1]}}</span> <span class="badge bg-danger"
-                        style="position: absolute; top: 0; right: 0;">Fazer</span></p>
-
+                <p class="mb-2"><span class="h2 me-2">{{tarefa[1]}}</span>
+                    {% if tarefa[3] == "Fazer" %}
+                    <span class="badge bg-danger" style="position: absolute; top: 0; right: 0;">{{tarefa[3]}}</span>
+                    <a href="/done/{{tarefa[0]}}"><span class="material-icons" id="done">
+                            done
+                        </span></a>
+                        <a id="edit" href="#"><span class="material-icons">mode</span></a>
+                    {% else %}
+                    <span class="badge bg-success" style="position: absolute; top: 0; right: 0;">{{tarefa[3]}}</span>
+                    {% endif %}
+                </p>
                 <p class="text-muted pb-2">{{tarefa[2]}}</p>
-                <a id="edit" href="#"><span
-                        class="material-icons">mode</span></a>
                 <a href="#" id="delete"><span class="material-icons">
-                    delete
-                    </span></a>
-                <a href="#"><span class="material-icons" id="done">
-                    done
+                        delete
                     </span></a>
             </div>
         </div>
@@ -142,17 +145,20 @@
 
         <div class="col-12 col-md-6 col-lg-4">
             <div class="card-body p-4" id="tarefa" style="position: relative;">
-                <p class="mb-2"><span class="h2 me-2">{{tarefa[1]}}</span> <span class="badge bg-danger"
-                        style="position: absolute; top: 0; right: 0;">Fazer</span></p>
-
+                <p class="mb-2"><span class="h2 me-2">{{tarefa[1]}}</span>
+                    {% if tarefa[3] == "Fazer" %}
+                    <span class="badge bg-danger" style="position: absolute; top: 0; right: 0;">{{tarefa[3]}}</span>
+                    <a href="/done/{{tarefa[0]}}"><span class="material-icons" id="done">
+                            done
+                        </span></a>
+                    <a id="edit" href="#"><span class="material-icons">mode</span></a>
+                    {% else %}
+                    <span class="badge bg-success" style="position: absolute; top: 0; right: 0;">{{tarefa[3]}}</span>
+                    {% endif %}
+                </p>
                 <p class="text-muted pb-2">{{tarefa[2]}}</p>
-                <a id="edit" href="#"><span
-                        class="material-icons">mode</span></a>
                 <a href="#" id="delete"><span class="material-icons">
-                    delete
-                    </span></a>
-                <a href="#"><span class="material-icons" id="done">
-                    done
+                        delete
                     </span></a>
             </div>
         </div>

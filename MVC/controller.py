@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Request, Form
+from fastapi import FastAPI, Request, Form, APIRouter
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse, RedirectResponse
 from models import BancoDeDados
@@ -6,6 +6,7 @@ from datetime import datetime, date, timedelta
 
 
 app = FastAPI()
+router = APIRouter()
 templates = Jinja2Templates(directory="view")
 
 
@@ -16,10 +17,8 @@ def todo(request: Request):
     data_de_hoje = datetime.now().strftime("%d/%m/%Y")
     data_de_amanha = datetime.now() + timedelta(1)
     data_de_amanha_formatada = data_de_amanha.strftime("%d/%m/%Y")
-        # for data in tarefas:
-        #     data_de_hoje = datetime.now().strftime("%d/%m/%Y")
-        #     if data[2] == data_de_hoje:
-        #         print("Hoje")
+
+    badge_alert = "Fazer"
 
     return templates.TemplateResponse(
         "todo_list.html",
@@ -28,6 +27,7 @@ def todo(request: Request):
             "tarefas": tarefas,
             "data_de_hoje": data_de_hoje,
             "data_de_amanha_formatada": data_de_amanha_formatada,
+            "badge_alert": badge_alert,
         },
     )
 
@@ -37,3 +37,11 @@ def teste(request: Request, tarefa: str = Form(...), data: str = Form(...)):
     banco = BancoDeDados("dbsqlite")
     banco.salvar_alteracao(tarefa, data)
     return RedirectResponse("/", status_code=303)
+
+
+@app.get("/done/{id}")
+def done(id: int):
+    print("Rota done ativada")
+    banco = BancoDeDados("dbsqlite")
+    banco.editar_dado(id)
+    return RedirectResponse("/")
