@@ -46,7 +46,3 @@ def done(id: int):
     return RedirectResponse("/")
 
 
-@app.get("/editar/{id}")
-def edit(request: Request, id: int):
-    banco = BancoDeDados("dbsqlite")
-    return templates.TemplateResponse("editar_tarefa.html", {"request": request})

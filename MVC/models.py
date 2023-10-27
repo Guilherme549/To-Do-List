@@ -42,10 +42,4 @@ class BancoDeDados:
             cursor.execute("ROLLBACK")
             print(f"Erro ao atualizar: {e}")
 
-    def editar_tarefa(self, id, titulo, data):
-        cursor = self.con.cursor()
-        cursor.execute("BEGIN")
-        self.con.execute(
-            "UPDATE Tarefas SET Titulo = ?, data = ? where id ?", (titulo, data, id)
-        )
-        cursor.execute("COMMIT")
+    
