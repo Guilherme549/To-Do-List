@@ -17,7 +17,7 @@ def todo(request: Request):
     data_de_hoje = datetime.now().strftime("%d/%m/%Y")
     data_de_amanha = datetime.now() + timedelta(1)
     data_de_amanha_formatada = data_de_amanha.strftime("%d/%m/%Y")
-    
+
     
 
     return templates.TemplateResponse(
