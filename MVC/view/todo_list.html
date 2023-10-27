@@ -16,7 +16,6 @@
             border: 0px;
             margin: 0px;
             background-color: #eff1f2;
-
         }
 
         h1 {
@@ -28,12 +27,10 @@
         section {
             justify-content: center;
             padding: 20px;
-
         }
 
         .badge {
             margin-bottom: 10px;
-
         }
 
         .p-4 {
@@ -44,7 +41,6 @@
             width: 300px;
             height: 230px;
             margin-bottom: 15px;
-
         }
 
         .pb-2 {
@@ -53,6 +49,18 @@
 
         .mb-2 {
             text-align: center;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
+
+        .card-body {
+            flex: 0 0 calc(25% - 20px);
+            /* Defina 4 divs por linha */
+            margin: 10px;
         }
 
         #edit {
@@ -84,6 +92,10 @@
             background-color: green;
             border-radius: 10px;
         }
+
+        .badge {
+            margin-left: 25px;
+        }
     </style>
 </head>
 
@@ -110,8 +122,11 @@
             </div>
         </form>
     </header>
-    <section>
-        <p class="badge bg-success">Hoje</p>
+    {% if data_de_hoje and tarefas %}
+    <span class="badge bg-success">Hoje</span>
+    {% endif %}
+    <section class="card-container">
+
         {% for tarefa in tarefas %}
         {% if tarefa[2] == data_de_hoje %}
 
@@ -128,7 +143,7 @@
                     {% endif %}
                 </p>
                 <p class="text-muted pb-2">{{tarefa[2]}}</p>
-                <a href="#" id="delete"><span class="material-icons">
+                <a href="delete/{{tarefa[0]}}" id="delete"><span class="material-icons">
                         delete
                     </span></a>
             </div>
@@ -137,8 +152,13 @@
         {% endif %}
         {% endfor %}
     </section>
-    <section>
-        <p class="badge bg-warning">Amanhã</p>
+    {% for tarefa in tarefas %}
+    {% if tarefa[2] == data_de_amanha_formatada%}
+    <p class="badge bg-warning">Amanhã</p>
+    {% endif %}
+    {% endfor %}
+    <section class="card-container">
+
         {% for tarefa in tarefas %}
         {% if tarefa[2] == data_de_amanha_formatada %}
 
@@ -150,13 +170,13 @@
                     <a href="/done/{{tarefa[0]}}"><span class="material-icons" id="done">
                             done
                         </span></a>
-                
+
                     {% else %}
                     <span class="badge bg-success" style="position: absolute; top: 0; right: 0;">{{tarefa[3]}}</span>
                     {% endif %}
                 </p>
                 <p class="text-muted pb-2">{{tarefa[2]}}</p>
-                <a href="#" id="delete"><span class="material-icons">
+                <a href="delete/{{tarefa[0]}}" id="delete"><span class="material-icons">
                         delete
                     </span></a>
             </div>
@@ -166,11 +186,16 @@
         {% endfor %}
     </section>
 
-    <section>
+    {% for tarefa in tarefas %}
+    {% if tarefa[2] != data_de_hoje and tarefa[2] != data_de_amanha_formatada %}
+    <span class="badge bg-info text-dark">Outras datas</span>
+    {% endif %}
+    {% endfor %}
+    <section class="card-container">
 
-        <h1>Outras datas</h1>
+
         {% for tarefa in tarefas %}
-       
+        {% if tarefa[2] != data_de_hoje and tarefa[2] != data_de_amanha_formatada %}
 
         <div class="col-12 col-md-6 col-lg-4">
             <div class="card-body p-4" id="tarefa" style="position: relative;">
@@ -186,13 +211,13 @@
                     {% endif %}
                 </p>
                 <p class="text-muted pb-2">{{tarefa[2]}}</p>
-                <a href="#" id="delete"><span class="material-icons">
+                <a href="delete/{{tarefa[0]}}" id="delete"><span class="material-icons">
                         delete
                     </span></a>
             </div>
         </div>
 
-        
+        {% endif %}
         {% endfor %}
 
     </section>

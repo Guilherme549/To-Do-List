@@ -17,8 +17,8 @@ def todo(request: Request):
     data_de_hoje = datetime.now().strftime("%d/%m/%Y")
     data_de_amanha = datetime.now() + timedelta(1)
     data_de_amanha_formatada = data_de_amanha.strftime("%d/%m/%Y")
-
-    badge_alert = "Fazer"
+    
+    
 
     return templates.TemplateResponse(
         "todo_list.html",
@@ -27,7 +27,6 @@ def todo(request: Request):
             "tarefas": tarefas,
             "data_de_hoje": data_de_hoje,
             "data_de_amanha_formatada": data_de_amanha_formatada,
-            "badge_alert": badge_alert,
         },
     )
 
@@ -46,3 +45,8 @@ def done(id: int):
     return RedirectResponse("/")
 
 
+@app.get("/delete/{id}")
+def delete(id: int):
+    banco = BancoDeDados("dbsqlite")
+    banco.deletar_tarefa(id)
+    return RedirectResponse("/")

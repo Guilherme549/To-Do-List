@@ -42,4 +42,12 @@ class BancoDeDados:
             cursor.execute("ROLLBACK")
             print(f"Erro ao atualizar: {e}")
 
-    
+    def deletar_tarefa(self, id):
+        cursor = self.con.cursor()
+        try:
+            cursor.execute("DELETE FROM Tarefas WHERE id = ?", (id,))
+            self.con.commit()
+        except Exception as e:
+            self.con.rollback()
+            print(f"Erro ao excluir: {e}")
+        cursor.close()
