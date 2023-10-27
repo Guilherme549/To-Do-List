@@ -1,52 +1,49 @@
-To-Do-List Web App
-O To-Do-List Web App é uma aplicação que permite aos usuários gerenciar suas tarefas de forma prática. Com ele, você pode adicionar novas tarefas, marcá-las como concluídas e removê-las da lista.
+To-Do List
+Um site simples para gerenciar tarefas, permitindo aos usuários adicionar, excluir e marcar como concluídas as tarefas.
 
-Como Iniciar
-Siga os passos abaixo para configurar e executar o projeto localmente:
-
-Clone este repositório em sua máquina:
-
-bash
-Copy code
-git clone https://github.com/seu-usuario/to-do-list.git
-Navegue até o diretório do projeto:
-
-bash
-Copy code
-cd to-do-list
-Crie uma máquina virtual Python (venv) para isolar o ambiente de desenvolvimento:
-
-bash
-Copy code
+Instalação
+Instale a máquina virtual venv:
+python
 python -m venv venv
-Ative a máquina virtual (Windows):
 
-bash
-Copy code
+
+2. Ative o ambiente virtual venv:
+
 .\venv\Scripts\activate
-Ou ative a máquina virtual (macOS e Linux):
 
-bash
-Copy code
-source venv/bin/activate
-Instale as dependências do projeto:
 
-bash
-Copy code
-pip install -r requirements.txt
-Com as dependências instaladas, você pode iniciar o servidor com o comando:
+3. Instale as dependências:
 
-bash
-Copy code
+pip install fastapi
+pip install uvicorn
+
+Entre na pasta correta:
+cd "MVC"
+
+4. Rode o servidor:
+
 uvicorn controller:app --reload
-O servidor estará disponível em http://127.0.0.1:8000/.
 
-Acesse o site em seu navegador favorito com o seguinte endereço:
+## Acessando o site
+
+Acesse o site no navegador usando o seguinte endereço:
 
 http://127.0.0.1:8000/
 
-Agora você pode começar a gerenciar suas tarefas de forma eficiente com o To-Do-List Web App. Desfrute!
 
-Tecnologias Utilizadas
-FastAPI: Framework web assíncrono de alto desempenho.
-SQLite3: Sistema de gerenciamento de banco de dados leve e eficiente.
+## Licença
+
+Este projeto é licenciado sob a licença MIT.
+
+## Contribuições
+
+Contribuições são bem-vindas. Para contribuir, siga estas etapas:
+
+1. Fork o projeto no GitHub.
+2. Crie uma nova branch para sua alteração.
+3. Faça suas alterações e teste-as.
+4. Envie um pull request para a branch principal.
+
+## Contato
+
+Para mais informações, entre em contato com o autor do projeto pelo e-mail guilhermevs54@gmail.com
